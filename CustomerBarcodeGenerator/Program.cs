@@ -35,7 +35,7 @@ namespace CustomerBarcodeGenerator
         {
             yield return BarcodeCharacter.Start;
 
-            int sum = 0;
+            int sum = 19;
             foreach (var bc in data.SelectMany(ConvertToBarcodeCharacters).Take(20).PadLast(20, BarcodeCharacter.CC4))
             {
                 sum += (int)bc;
