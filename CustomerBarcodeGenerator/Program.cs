@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CustomerBarcodeGenerator
 {
@@ -9,12 +8,11 @@ namespace CustomerBarcodeGenerator
     {
         static void Main(string[] args)
         {
-            Run().Wait();
+            Run(args[0]);
         }
 
-        private static async Task Run()
+        private static void Run(string data)
         {
-            var data = "0123456WXYZ";
             var bars = GenerateBarcodeCharacters(data).SelectMany(ConvertToBars).ToList();
 
             using (var writer = new StreamWriter("test.svg"))
