@@ -8,14 +8,14 @@ namespace CustomerBarcodeGenerator
     {
         static void Main(string[] args)
         {
-            Run(args[0]);
+            Run(args[0], args[1]);
         }
 
-        private static void Run(string data)
+        private static void Run(string data1, string data2)
         {
-            var bars = GenerateBarcodeCharacters(data).SelectMany(ConvertToBars).ToList();
+            var bars = GenerateBarcodeCharacters(data1 + data2).SelectMany(ConvertToBars).ToList();
 
-            using (var writer = new StreamWriter("test.svg"))
+            using (var writer = new StreamWriter($"{data1}_{data2}.svg"))
             {
                 writer.WriteLine(@"<?xml version=""1.0"" encoding=""utf-8""?>");
                 writer.WriteLine($@"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 79.8 3.6"">");
