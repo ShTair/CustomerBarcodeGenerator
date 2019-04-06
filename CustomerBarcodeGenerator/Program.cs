@@ -18,12 +18,12 @@ namespace CustomerBarcodeGenerator
             using (var writer = new StreamWriter($"{data1}_{data2}.svg"))
             {
                 writer.WriteLine(@"<?xml version=""1.0"" encoding=""utf-8""?>");
-                writer.WriteLine($@"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 79.8 3.6"">");
+                writer.WriteLine($@"<svg width=""79.8mm"" height=""3.6mm"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 133 6"">");
 
                 int count = 0;
                 foreach (var bar in bars)
                 {
-                    writer.WriteLine($@"<rect x=""{count * 1.2}"" y=""{((int)bar - 1) / 2 * 1.2}"" width=""0.6"" height=""{(3 - (int)bar / 2) * 1.2}"" stroke=""none"" stroke-width=""0"" fill=""black"" />");
+                    writer.WriteLine($@"<rect x=""{count * 2}"" y=""{((int)bar - 1) / 2 * 2}"" width=""1"" height=""{(3 - (int)bar / 2) * 2}"" stroke=""none"" stroke-width=""0"" fill=""black"" />");
                     count++;
                 }
 
