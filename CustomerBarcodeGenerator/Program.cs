@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace CustomerBarcodeGenerator
 {
@@ -6,7 +7,20 @@ namespace CustomerBarcodeGenerator
     {
         static void Main(string[] args)
         {
-            Run(args[0], args[1]);
+            if (args.Length < 2)
+            {
+                Console.WriteLine("usage: <PostCode> <Number>");
+                Console.ReadLine();
+            }
+            else if (args[0].Length != 7)
+            {
+                Console.WriteLine("PostCodeは、ハイフン無しで7文字指定してください");
+                Console.ReadLine();
+            }
+            else
+            {
+                Run(args[0], args[1]);
+            }
         }
 
         private static void Run(string data1, string data2)
