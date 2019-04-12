@@ -33,12 +33,14 @@ namespace CustomerBarcodeGenerator
                 writer.WriteLine(@"<?xml version=""1.0"" encoding=""utf-8""?>");
                 writer.WriteLine($@"<svg width=""79.8mm"" height=""3.6mm"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 133 6"">");
 
+                writer.WriteLine("<g>");
                 int count = 0;
                 foreach (var bar in bars)
                 {
-                    writer.WriteLine($@"<rect x=""{count * 2}"" y=""{((int)bar - 1) / 2 * 2}"" width=""1"" height=""{(3 - (int)bar / 2) * 2}"" stroke=""none"" stroke-width=""0"" fill=""black"" />");
+                    writer.WriteLine($@"<rect x=""{count * 2}"" y=""{((int)bar - 1) / 2 * 2}"" width=""1"" height=""{(3 - (int)bar / 2) * 2}"" />");
                     count++;
                 }
+                writer.WriteLine("</g>");
 
                 writer.WriteLine("</svg>");
             }
