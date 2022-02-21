@@ -1,8 +1,8 @@
 ﻿namespace CustomerBarcodeGenerator;
 
-internal class CustomerBarcode
+internal static class BarcodeUtils
 {
-    public IEnumerable<Bar> Generate(string data)
+    public static IEnumerable<Bar> Generate(string data)
     {
         return GenerateBarcodeCharacters(data).SelectMany(t => ConvertToBars(t));
     }
@@ -24,15 +24,15 @@ internal class CustomerBarcode
 
     private static IEnumerable<BarcodeCharacter> ConvertToBarcodeCharacters(char character)
     {
-        if (character >= '0' && character <= '9')
+        if (character is >= '0' and <= '9')
         {
             yield return BarcodeCharacter.Num0 + character - '0';
         }
-        else if (character == '-')
+        else if (character is '-')
         {
             yield return BarcodeCharacter.Hyphen;
         }
-        else if (character >= 'A' && character <= 'Z')
+        else if (character is >= 'A' and <= 'Z')
         {
             yield return BarcodeCharacter.CC1 + (character - 'A') / 10;
             yield return BarcodeCharacter.Num0 + (character - 'A') % 10;
